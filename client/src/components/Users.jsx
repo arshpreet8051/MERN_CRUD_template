@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {Link} from 'react-router-dom';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Users = () =>{
 
     const [users,setUsers] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         axios.get("http://localhost:3001/")
@@ -20,6 +22,8 @@ const Users = () =>{
                       window.location.reload()  
     })
         .catch(err => console.log(err));
+
+        navigate("/");
     }
 
     return(
